@@ -26,11 +26,4 @@ To deploy using Terraform:
 See [docs/](docs/) for more details of this demo. 
 
 
-## Learn more
 
- * [Managing Infrastructure as Code](https://cloud.google.com/solutions/managing-infrastructure-as-code)
- * [Processing images from Cloud Storage tutorial ](https://cloud.google.com/run/docs/tutorials/image-processing)
-
-
-[shell_img]: http://gstatic.com/cloudssh/images/open-btn.png
-[shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/GoogleCloudPlatform/serverless-expeditions&page=editor&open_in_editor=terraform-serverless/README.md
