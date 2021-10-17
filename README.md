@@ -22,8 +22,6 @@ To deploy using Terraform:
     terraform init
     terraform apply
     ```
-
-See [docs/](docs/) for more details of this demo. 
-
+ 
 
 
