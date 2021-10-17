@@ -11,7 +11,7 @@ resource "google_project_service" "run" {
 
 resource "google_project_service" "enable_cloud_resource_manager_api" {
   service  = "cloudresourcemanager.googleapis.com"
-  disable_on_destroy = false
+  disable_dependent_services = true
 }
 
 resource "google_project_service" "iam" {
