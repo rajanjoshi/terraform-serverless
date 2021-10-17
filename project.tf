@@ -39,7 +39,7 @@ resource "google_service_account" "cats_worker" {
 # Set permissions
 resource "google_project_iam_binding" "service_permissions" {
   for_each = toset([
-    "run.invoker", "cloudfunctions.invoker"
+    "run.invoker", "cloudfunctions.invoker","iam.securityAdmin","resourcemanager.projectIamAdmin"
   ])
 
   role       = "roles/${each.key}"
