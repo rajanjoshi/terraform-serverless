@@ -36,7 +36,7 @@ resource "google_service_account" "cats_worker" {
 }
 
 
-# Set permissions
+# Set permissionss
 resource "google_project_iam_binding" "service_permissions" {
   for_each = toset([
     "run.invoker", "cloudfunctions.invoker"
