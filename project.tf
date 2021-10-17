@@ -35,6 +35,7 @@ resource "google_service_account" "cats_worker" {
   display_name = "Cats Worker SA"
 }
 
+
 # Set permissions
 resource "google_project_iam_binding" "service_permissions" {
   for_each = toset([
