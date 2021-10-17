@@ -1,6 +1,7 @@
 variable "project" {
   type        = string
   description = "Google Cloud Platform Project ID"
+  default = "powerful-vine-329211"
 }
 
 variable "region" {
