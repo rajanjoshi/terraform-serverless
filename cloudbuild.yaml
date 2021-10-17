@@ -21,7 +21,13 @@ steps:
       - '-input=false'
       - './'
 
-
+  - id: terraform-plan
+    name: hashicorp/terraform:0.14.8
+    args:
+      - 'plan'
+      - '-no-color'
+      - '-input=false'
+      - './'
     
 
 substitutions:
