@@ -10,7 +10,6 @@ resource "google_cloudfunctions_function" "function" {
   source_archive_object = google_storage_bucket_object.archive.name
   trigger_http          = true
   entry_point           = "detect_cat"
-  service_account_email = google_service_account.cats_worker.email
 
   depends_on = [google_project_service.cloudfunctions]
 }
