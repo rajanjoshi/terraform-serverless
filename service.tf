@@ -28,14 +28,11 @@ resource "google_cloud_run_service" "cats" {
   depends_on = [google_project_service.run]
 }
 
-# Set service public
+# Set service publicg
 data "google_iam_policy" "noauth" {
   binding {
-    for_each = toset([
-       "run.invoker", "cloudfunctions.invoker"
-    ])
 
-    role = "roles/${each.key}"
+    role = "roles/run.invoker"
     members = [
       "allUsers",
     ]
