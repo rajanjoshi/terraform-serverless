@@ -4,12 +4,14 @@ resource "google_cloudfunctions_function" "function" {
   description = "processing"
   runtime     = "python37"
   region      = var.region
+  project     = var.project
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.source.name
   source_archive_object = google_storage_bucket_object.archive.name
   trigger_http          = true
   entry_point           = "detect_cat"
+  service_account_email = google_service_account.cats_workers.email
 
   depends_on = [google_project_service.cloudfunctions]
 }
