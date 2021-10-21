@@ -31,7 +31,11 @@ resource "google_cloud_run_service" "cats" {
 # Set service public
 data "google_iam_policy" "noauth" {
   binding {
-    role = "roles/run.invoker"
+    for_each = toset([
+       "run.invoker", "cloudfunctions.invoker"
+    ])
+
+    role = "roles/${each.key}"
     members = [
       "allUsers",
     ]
