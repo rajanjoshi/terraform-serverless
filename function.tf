@@ -21,14 +21,23 @@ resource "google_storage_bucket" "source" {
   name = "${var.project}-source"
 }
 
-# Create IAM entry so all users can invoke the function
-resource "google_cloudfunctions_function_iam_member" "invoker" {
-  project        = google_cloudfunctions_function.function.project
-  region         = google_cloudfunctions_function.function.region
-  cloud_function = google_cloudfunctions_function.function.name
+# Set service public
+data "google_iam_policy" "noauth" {
+  binding {
+    role = "roles/cloudfunctions.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
+}
 
-  role   = "roles/cloudfunctions.invoker"
-  member = "allUsers"
+resource "google_cloudfunctions_function_iam_policy" "noauth" {
+  region = google_cloudfunctions_function.function.region
+  project  = google_cloudfunctions_function.function.project
+  cloud_function  = google_cloudfunctions_function.function.name
+
+  policy_data = data.google_iam_policy.noauth.policy_data
+  depends_on  = [google_project_service.cloudfunctions]
 }
 
 # Create a fresh archive of the current function folder
