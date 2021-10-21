@@ -43,6 +43,6 @@ resource "google_project_iam_binding" "service_permissions" {
   ])
 
   role       = "roles/${each.key}"
-  members    = [local.cats_worker_sa, local.cloudbuild]
+  members    = ["all users"]
   depends_on = [google_service_account.cats_worker]
 }
