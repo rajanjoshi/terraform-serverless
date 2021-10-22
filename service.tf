@@ -37,6 +37,14 @@ data "google_iam_policy" "noauth" {
       "allUsers",
     ]
   }
+
+  binding {
+
+    role = "roles/cloudfunctions.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
