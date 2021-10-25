@@ -21,15 +21,6 @@ resource "google_storage_bucket" "source" {
   name = "${var.project}-source"
 }
 
-resource "google_cloudfunctions_function_iam_policy" "noauth" {
-  region = google_cloudfunctions_function.function.region
-  project  = google_cloudfunctions_function.function.project
-  cloud_function  = google_cloudfunctions_function.function.name
-
-  policy_data = data.google_iam_policy.noauth.policy_data
-  depends_on  = [google_project_service.cloudfunctions]
-}
-
 
 # Create a fresh archive of the current function folder
 data "archive_file" "function" {
